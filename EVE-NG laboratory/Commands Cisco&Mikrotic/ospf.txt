@@ -1,0 +1,219 @@
+C-OSPF-3
+
+en
+conf t
+int e0/0
+ip address 12.13.10.10 255.255.255.252
+no shutdown
+
+int e0/1
+ip address 12.13.10.13 255.255.255.252
+no shutdown
+
+int e0/2
+ip address 12.12.17.2 255.255.255.252
+no shutdown
+
+int e0/3
+ip address 12.13.20.2 255.255.255.252
+no shutdown
+
+int e1/0
+ip address 12.13.21.2 255.255.255.252
+no shutdown
+
+do wr
+do wr
+exit
+exit
+exit
+
+------------------------------------------------------------------------------
+
+C-OSPF-4
+
+en
+conf t
+int e0/1
+ip address 12.13.10.18 255.255.255.252
+no shutdown
+
+int e0/0
+ip address 12.13.10.14 255.255.255.252
+no shutdown
+
+do wr
+do wr
+exit
+exit
+exit
+
+------------------------------------------------------------------------------
+
+C-OSPF-2
+
+en
+conf t
+hostname C-OSPF-2
+
+int e0/0
+ip address 12.13.10.6 255.255.255.252
+no shutdown
+
+int e0/1
+ip address 12.12.13.2 255.255.255.252
+no shutdown
+
+int e0/2
+ip address 12.13.10.9 255.255.255.252
+no shutdown
+
+int e0/3
+ip address 12.12.14.1 255.255.255.252
+no shutdown
+
+do wr
+do wr
+exit
+exit
+exit
+
+------------------------------------------------------------------------------
+
+C-OSPF-1
+
+en
+conf t
+hostname C-OSPF-1
+
+int e0/0
+ip address 12.13.10.2 255.255.255.252
+no shutdown
+
+int e0/1
+ip address 12.13.10.5 255.255.255.252
+no shutdown
+
+do wr
+do wr
+exit
+exit
+exit
+
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+M-OSPF-5
+
+/interface bridge
+add name=loopback
+/routing ospf instance
+set 0 router-id=10.255.255.5
+/ip address
+add address=12.12.15.2/30 interface=ether1 network=12.12.15.0
+add address=12.12.17.1/30 interface=ether2 network=12.12.17.0
+add address=12.12.16.1/30 interface=ether3 network=12.12.16.0
+add address=12.12.14.2/30 interface=ether4 network=12.12.14.0
+add address=10.255.255.5 interface=loopback network=10.255.255.5
+/routing ospf network
+add area=backbone network=12.12.15.0/30
+add area=backbone network=12.12.16.0/30
+add area=backbone network=12.12.17.0/30
+add area=backbone network=12.12.14.0/30
+/system identity
+set name=M-OSPF-5
+
+------------------------------------------------------------------------------
+M-OSPF-4
+
+/interface bridge
+add name=loopback
+/routing ospf instance
+set 0 router-id=10.255.255.5
+/ip address
+add address=12.12.12.2/30 interface=ether1 network=12.12.12.0
+add address=12.11.11.2/30 interface=ether2 network=12.11.11.0
+add address=12.12.15.1/30 interface=ether3 network=12.12.15.0
+add address=12.11.12.1/30 interface=ether4 network=12.11.12.0
+add address=10.255.255.5 interface=loopback network=10.255.255.5
+/routing ospf network
+add area=backbone network=12.12.15.0/30
+add area=backbone network=12.12.16.0/30
+add area=backbone network=12.12.17.0/30
+add area=backbone network=12.12.14.0/30
+------------------------------------------------------------------------------
+M-OSPF-10
+
+/interface bridge
+add name=loopback
+/routing ospf instance
+set 0 router-id=10.255.255.5
+/ip address
+add address= 14.1.1.0/30 interface=ether1 network= 14.1.1.0
+add address= 18.1.1.0/30 interface=ether2 network= 18.1.1.0
+add address= 12.11.10.0/30 interface=ether3 network= 12.11.10.0
+add address= 12.12.10.0/30 interface=ether4 network= 12.12.10.0
+add address= 12.13.10.0/30 interface=ether5 network= 12.13.10.0
+add address= 15.1.1.0/30 interface=ether6 network= 15.1.1.0
+
+add address=10.255.255.5 interface=loopback network= 10.255.255.5
+/routing ospf network
+add area=backbone network= 14.1.1.0/30 
+add area=backbone network= 18.1.1.0/30 
+add area=backbone network= 12.11.10.0/30 
+add area=backbone network= 12.12.10.0/30 
+add area=backbone network= 12.13.10.0/30 
+add area=backbone network= 15.1.1.0/30 
+
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+
+en
+conf t
+routing ospf 1
+network 12.13.10.12 0.0.0.3 area 0
+
+
+/interface bridge
+add name=loopback
+/interface wireless security-profiles
+set [ find default=yes ] supplicant-identity=MikroTik
+/system logging action
+set 1 disk-file-name=log
+/ip address
+add address=14.1.1.2/30 interface=ether1 network=14.1.1.0
+add address=18.1.1.2/30 interface=ether2 network=18.1.1.0
+add address=12.11.10.1/30 interface=ether3 network=12.11.10.0
+add address=12.12.10.1/30 interface=ether4 network=12.12.10.0
+add address=12.13.10.1/30 interface=ether5 network=12.13.10.0
+add address=15.1.1.1/30 interface=ether6 network=15.1.1.0
+add address=10.255.255.5 interface=loopback network=10.255.255.5
+/ip torrent
+set download-directory=/flash/rw/disk
+#error exporting /ipv6/route/rule
+#error exporting /routing/policy/selection
+/system identity
+set name=M-OSPF-10
+
+
+en
+conf t
+router ospf 1
+redistribute connected
+do wr
+do wr
+exit
+exit
+
+
+/routing ospf instance
+set 0 router-id=10.255.255.1
+
+
+
+
+
+
+
+
+
+

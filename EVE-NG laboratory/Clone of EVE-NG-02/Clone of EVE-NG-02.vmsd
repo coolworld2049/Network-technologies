@@ -1,0 +1,7 @@
+.encoding = "windows-1251"
+cloneOf0 = "C:\Users\R\Documents\Virtual Machines\EVE-NG-02\EVE-NG-02.vmx"
+numCloneOf = "1"
+sentinel0 = "EVE-NG-02-disk3-cl1.vmdk"
+sentinel1 = "EVE-NG-02-disk2-cl1.vmdk"
+sentinel2 = "EVE-NG-02-disk1-cl1.vmdk"
+numSentinels = "3"

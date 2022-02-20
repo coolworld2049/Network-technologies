@@ -1,0 +1,23 @@
+
+Main_Router>en
+Main_Router#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Main_Router(config)#ip route 169.185.0.0 255.255.252.0 10.16.0.1
+Main_Router(config)#ip route 172.160.0.0 255.255.252.0 10.17.0.1
+Main_Router(config)#ip route 16.18.0.0 255.255.252.0 10.16.0.1
+Main_Router(config)#ip route 17.16.0.0 255.255.252.0 10.17.0.1
+Main_Router(config)#do wr
+Building configuration...
+[OK]
+Main_Router(config)#
+
+
+C-R-3
+Router(config)#ip route 169.185.1.0 255.255.255.0 16.18.1.2
+Router(config)#ip route 169.185.2.0 255.255.255.0 16.18.2.2
+Router(config)#ip route 169.185.3.0 255.255.255.0 16.18.3.2
+Router(config)#do wr
+Building configuration...
+[OK]
+Router(config)#
+

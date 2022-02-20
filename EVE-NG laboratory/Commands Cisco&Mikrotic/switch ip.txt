@@ -1,0 +1,10 @@
+en
+conf t
+int vlan 70
+ip route 0.0.0.0 0.0.0.0 10.0.70.254
+no shutdown
+do wr
+int Vlan70
+no int Vlan 70
+do wr
+do wr

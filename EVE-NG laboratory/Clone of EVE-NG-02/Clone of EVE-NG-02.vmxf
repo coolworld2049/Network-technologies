@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<Foundry>
+<VM>
+<VMId type="string">52 a1 3f d0 ef 5a a3 bc-03 61 fe 1c bf dc 7d 6b</VMId>
+<ClientMetaData>
+<clientMetaDataAttributes/>
+<HistoryEventList/></ClientMetaData>
+<vmxPathName type="string">Clone of EVE-NG-02.vmx</vmxPathName></VM></Foundry>

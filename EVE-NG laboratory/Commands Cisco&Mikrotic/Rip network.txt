@@ -1,0 +1,70 @@
+
+-----------------------------------------5
+en
+conf t
+router rip
+no auto-summary
+network 93.46.240.0
+network 93.46.249.0
+network 213.234.12.0
+network 100.120.86.0
+network 80.18.81.0
+do wr
+do wr
+exit
+exit
+
+
+
+-----------------------------------------6
+en
+conf t
+router rip
+no auto-summary
+network 75.100.43.0
+network 213.234.13.0
+network 100.120.86.0
+network 80.18.80.0
+network 75.100.44.0
+network 76.100.46.0
+network 75.100.46.0
+do wr
+do wr
+exit
+exit
+
+
+-----------------------------------------7
+en
+conf t
+router rip
+no auto-summary
+network 80.18.80.0
+network 80.18.84.0
+network 80.18.83.0
+network 80.18.82.0
+network 80.18.81.0
+do wr
+do wr
+exit
+exit
+
+-----------------------------------------10
+en
+conf t
+router rip
+no auto-summary
+network 186.13.48.0/30
+network 80.18.83.0/30
+network 186.12.48.0/30
+do wr
+do wr
+exit
+exit
+
+
+
+
+
+
+
